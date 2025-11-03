@@ -234,7 +234,7 @@ END;
 -- Question 4 --
 ----------------
 
-CREATE VIEW
+CREATE OR REPLACE VIEW
     vwBikesRUs
 AS
     SELECT
@@ -272,6 +272,7 @@ SELECT * FROM vwBikesRUs;
 ----------------
 -- Question 5 --
 ----------------
+
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE
@@ -315,7 +316,9 @@ BEGIN
     
     DBMS_OUTPUT.PUT_LINE('ATTENTION: '
         || v_donor_name
-        || ' assisted by: '
+        || ' (contact number: '
+        || v_contact_number
+        || ') assisted by: '
         || v_volunteer_name
         || ', donated the ' 
         || v_bike_desc
@@ -516,10 +519,6 @@ SET
 WHERE
     donation_id = 1
 ;
-
------------------
--- Question 10 --
------------------
 
 -- Drop Utilities (For Mistakes)
 DROP TABLE donations;
